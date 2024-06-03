@@ -5,12 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use League\Csv\Reader;
 
-
 class PizzaController extends Controller
 {
-
     public function index() {
-        return view('pizza');
+        return view('/pizza');
     }
 
     public function calculateBill(Request $request) {
@@ -20,23 +18,22 @@ class PizzaController extends Controller
         $items = $csv->getRecords();
 
         $totalPrice = 0;
+        $orders = $request->input('orders');
 
-        $size = $request->input('size');
-        $includePepperoni = $request->input('pepperoni');
-        $includeExtraCheese = $request->input('extra_cheese');
-
-        foreach($items as $item) {
-            if ($item['Item'] === ucfirst($size)){
-                $totalPrice += (float) $item['Price'];
-            }
-        if ($includePepperoni && $item['Item'] === 'Pepperoni'.ucfirst($size)) {
-                $totalPrice += (float) $item['Price'];
-            }
-            if($includeExtraCheese && $item['Item'] === 'ExtraCheese'){
-                $totalPrice += (float) $item['Price'];
+        foreach ($orders as $order) {
+            foreach ($items as $item) {
+                if ($item['Item'] === ucfirst($order['size'])) {
+                    $totalPrice += (float)$item['Price'];
+                }
+                if ($order['pepperoni'] && $item['Item'] === 'Pepperoni' . ucfirst($order['size'])) {
+                    $totalPrice += (float)$item['Price'];
+                }
+                if ($order['extraCheese'] && $item['Item'] === 'ExtraCheese') {
+                    $totalPrice += (float)$item['Price'];
+                }
             }
         }
 
-        return view('pizza', ['total_price' => $totalPrice]);
+        return response()->json(['total' => $totalPrice]);
     }
 }

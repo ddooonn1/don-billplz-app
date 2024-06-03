@@ -11,7 +11,7 @@ class GeneratorController extends Controller
 {
 
     public function index() {
-        return redirect('/');
+        return view('/password-generator');
     }
 
     public function generatePassword(Request $request) {
@@ -58,6 +58,6 @@ class GeneratorController extends Controller
             $password .= $pool[$charIndex];
         }
     
-        return view('home', ['generatedPassword' => $password]);
+        return view('/password-generator', ['generatedPassword' => $password]);
     }
 }
