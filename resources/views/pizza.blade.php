@@ -4,10 +4,10 @@
 <div class="flex justify-center items-center min-h-screen bg-black">
     <div class="text-center">
         <div class="flex flex-col text-neon-green">
-            <a href="/" class="text-l absolute top-10 left-10 text-neon-green font-bold mr-1 mb-1 transition duration-300 ease-in-out hover:text-l">↰ Back</a>
-            <h1 class="text-5xl text-neon-green font-bold">Pizza</h1>
-            <div class="form mb-30">
-                <form id="orderForm">
+            <a href="/" class="text-l absolute top-10 left-10 text-neon-green font-bold mr-1 mb-1 transition duration-300 ease-in-out hover:text-l" title="Go home">↰ Back</a>
+            <h1 class="text-5xl text-neon-green font-bold mb-5">Pizza Parlour</h1>
+            <div class="form mb-30 border border-neon-green px-3 py-3">
+                <form id="orderForm" class="text-left">
                     @csrf
                     <div>
                         <label for="size">Pizza Size:</label>
@@ -32,14 +32,14 @@
                         </label>
                     </div>
 
-                    <button type="button" id="addOrderBtn" class="border border-neon-green text-neon-green hover:text-black hover:bg-neon-green font-bold px-4 py-2 rounded mt-4">Add Order</button>
+                    <button type="button" id="addOrderBtn" class="border border-neon-green text-neon-green hover:text-black hover:bg-neon-green font-bold px-4 py-2 rounded mt-4 mx-auto">Add Order</button>
                 </form>
             </div>
 
-            <div id="orderSummary" class="hidden">
-                <h2 class="text-2xl">Order Summary</h2>
+            <div id="orderSummary" class="hidden mt-10 bg-neon-green text-black px-5 py-5">
+                <h2 class="text-2xl font-bold mb-5 underline">Order Summary</h2>
                 <ul id="orderList"></ul>
-                <button type="button" id="placeOrderBtn" class="border border-neon-green text-neon-green hover:text-black hover:bg-neon-green font-bold px-4 py-2 rounded mt-4">Confirm and Place Order</button>
+                <button type="button" id="placeOrderBtn" class="border border-black text-black hover:text-neon-green hover:bg-black font-bold px-4 py-2 rounded mt-4">Confirm and Place Order</button>
             </div>
 
         </div>
@@ -65,9 +65,9 @@
 
             let pepperoniPrice = 0;
             if (document.getElementById('pepperoni').checked) {
-                if (size === 'small') {
+                if (size === 'Small') {
                     pepperoniPrice = parseFloat(document.getElementById('pepperoni').getAttribute('data-small-price'));
-                } else if (size === 'medium') {
+                } else if (size === 'Medium') {
                     pepperoniPrice = parseFloat(document.getElementById('pepperoni').getAttribute('data-medium-price'));
                 }
             }
@@ -86,7 +86,7 @@
                 extraCheese: document.getElementById('extra_cheese').checked,
             };
             
-            if (orderData.size === 'large' && orderData.pepperoni) {
+            if (orderData.size === 'Large' && orderData.pepperoni) {
                 alert("Extra Pepperoni is not available for Large size pizza.");
                 return;
             }
@@ -100,9 +100,9 @@
             orderItem.innerHTML = `
                 Size: ${orderData.size}, 
                 Pepperoni: ${orderData.pepperoni ? 'Yes' : 'No'}, 
-                Extra Cheese: ${orderData.extraCheese ? 'Yes' : 'No'}
-                <span class="orderValue">Total: RM${calculatePrice(orderData).toFixed(2)}</span>
-                <button class="removeOrderBtn border border-neon-green text-neon-green hover:text-black hover:bg-neon-green font-bold px-2 py-1 rounded ml-2">Remove</button>
+                Extra Cheese: ${orderData.extraCheese ? 'Yes,' : 'No,'}
+                <span class="orderValue font-bold">Total: RM${calculatePrice(orderData).toFixed(2)}</span>
+                <button class="removeOrderBtn border border-black text-black hover:text-neon-green hover:bg-black font-bold px-2 py-1 rounded ml-2">Remove</button>
             `;
             orderList.appendChild(orderItem);
 

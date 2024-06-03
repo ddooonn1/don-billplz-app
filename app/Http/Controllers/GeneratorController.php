@@ -43,7 +43,7 @@ class GeneratorController extends Controller
 
         // Perform error checking
         if (empty($pools)) {
-            return redirect('/')->withErrors(['At least one character type must be selected'])->withInput();
+            return redirect('/password-generator')->withErrors(['At least one character type must be selected'])->withInput();
         }
 
         $password = '';

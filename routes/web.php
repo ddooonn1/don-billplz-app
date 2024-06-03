@@ -13,8 +13,6 @@ Route::get('/password-generator', [GeneratorController::class, 'index'])->name('
 
 Route::post('/generate-password', [GeneratorController::class, 'generatePassword'])->name('generate.password');
 
-Route::get('/pizza-home', [PizzaController::class, 'index'])->name('pizza.home');
-
-Route::post('/add-order', [PizzaController::class, 'addPizza'])->name('add.pizza');
+Route::get('/pizza-parlour', [PizzaController::class, 'index'])->name('pizza.home');
 
 Route::post('/order-pizza', [PizzaController::class, 'calculateBill'])->name('order.pizza');

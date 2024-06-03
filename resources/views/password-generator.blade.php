@@ -4,11 +4,11 @@
     <div class="flex justify-center items-center min-h-screen w-full bg-black">
         <div class="text-center">
             <div class="flex flex-col w-1200 h-720">
-            <a href="/" class="text-l absolute top-10 left-10 text-neon-green font-bold mr-1 mb-1 transition duration-300 ease-in-out hover:text-l">↰ Back</a>
-                    <h1 class="text-5xl text-neon-green font-bold">Password Generator</h1>
+                <a href="/" class="text-l absolute top-10 left-10 text-neon-green font-bold mr-1 mb-1 transition duration-300 ease-in-out hover:text-l" title="Go home">↰ Back</a>
+                <h1 class="text-5xl text-neon-green font-bold mb-5">Password Generator</h1>
                 <form action="{{ route('generate.password') }}" method="POST">
                     @csrf
-                    <div class="border border-solid text-neon-green border-neon-green px-4 py-5 flex flex-col md:flex-row md:space-x-4 w-1200 h-720">
+                    <div class="border border-solid text-neon-green border-neon-green px-4 py-5 flex flex-col md:flex-row md:space-x-4 w-1200 h-720 mb-5">
                         <div class="length flex-1">
                             <label for="length">Password Length:</label>
                             <div class="self-center items-center justify-center">

@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 body {
-    font-family: "Jacquard 12", system-ui;
-    font-weight: 500;
+    font-family: "Cutive Mono", monospace;
+    font-weight: 100;
     font-style: normal;
 }
 
