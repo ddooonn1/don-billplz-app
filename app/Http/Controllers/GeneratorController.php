@@ -9,6 +9,11 @@ use Ramsey\Uuid\Generator\RandomBytesGenerator;
 
 class GeneratorController extends Controller
 {
+
+    public function index() {
+        return redirect('/');
+    }
+
     public function generatePassword(Request $request) {
 
         $length = $request->input('length', 12);
